@@ -12,8 +12,6 @@ export const getBooks = async () => {
    } catch (error) {
       return 'We have some problems'
    }
-
-  
 }
 
 export const searchBooks = async (query: string) => {
@@ -34,8 +32,6 @@ export const searchBooks = async (query: string) => {
    } catch (error) {
       return 'Book not found'
    }
-
-  
 }
 
 export const getBookById = async (id: string) => {
@@ -55,7 +51,15 @@ export const getBookById = async (id: string) => {
    }
 }
 
-export const postProducts = async (data: any) => {
+interface Product {
+   id: string
+   count: number
+}
+
+interface ProductsData {
+   products: Product[]
+}
+export const postProducts = async (data: ProductsData) => {
    const token = localStorage.getItem('token')
    if (!token || !data) return
 
@@ -68,6 +72,6 @@ export const postProducts = async (data: any) => {
 
       body: JSON.stringify(data)
    })
-   //    console.log(res.status)
+   console.log(res.status)
    return res.status
 }
