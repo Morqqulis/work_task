@@ -33,14 +33,12 @@ const DetailsHero: React.FC<IDetailsHero> = ({ id }): JSX.Element => {
    })
 
    const handleCheckout = () => {
-    const token  = localStorage.getItem('token')
+      const token = localStorage.getItem('token')
 
-    if (!token) {
-       router.push('/')
-       document.location.href = '/'
-    }
-    
-
+      if (!token) {
+         router.push('/')
+         document.location.href = '/'
+      }
 
       const currentProducts = localStorage.getItem('products')
       const productsArray: IProducts[] = currentProducts ? JSON.parse(currentProducts) : []

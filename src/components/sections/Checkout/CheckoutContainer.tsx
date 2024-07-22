@@ -5,6 +5,8 @@ import { getBooks } from '@utils/functions'
 import { useEffect, useState } from 'react'
 import CheckoutItem from './CheckoutItem'
 import CheckoutSummary from './CheckoutSummary'
+import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'
 
 interface ICheckoutContainer {}
 
@@ -24,11 +26,21 @@ export interface IProduct {
 
 const CheckoutContainer: React.FC = (): JSX.Element => {
    const [showBooks, setShowBooks] = useState<(IBook & { count: number })[]>([])
+   const router = useRouter()
+
    const { isPending, error, data } = useQuery({
       queryKey: ['books'],
       queryFn: getBooks,
       refetchOnWindowFocus: false
    })
+
+   useEffect(() => {
+      const token = localStorage.getItem('token')
+      if (!token) {
+         router.push('/')
+        //  document.location.href = '/'
+      }
+   }, [])
 
    useEffect(() => {
       if (data) {
