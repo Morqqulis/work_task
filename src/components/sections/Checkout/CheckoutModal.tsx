@@ -40,9 +40,9 @@ const CheckoutModal: React.FC<ICheckoutModal> = ({ books }): JSX.Element => {
    return (
       <AlertDialog>
          <AlertDialogTrigger
-            className={`w-full rounded-xl bg-slate-900 py-4 font-medium text-white disabled:hover:bg-gray-400 disabled:active:scale-100 disabled:hover:scale-100 disabled:cursor-not-allowed disabled:bg-gray-400 transition-all hover:scale-105 hover:bg-red-500 active:scale-90`}
+            className={`w-full rounded-xl bg-slate-900 py-4 font-medium text-white transition-all hover:scale-105 hover:bg-red-500 active:scale-90 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:hover:scale-100 disabled:hover:bg-gray-400 disabled:active:scale-100`}
             onClick={handleCheckout}
-            disabled={isPending || books.length === 0}
+            disabled={!products.length}
          >
             Checkout
          </AlertDialogTrigger>
