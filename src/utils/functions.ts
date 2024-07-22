@@ -1,12 +1,10 @@
 import axios from 'axios'
 
 export const getBooks = async () => {
-   const token = localStorage.getItem('token')
-   if (!token) return
    try {
       const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/product/explore`, {
          headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
          }
       })
       const data = await res.data.result.products
@@ -19,13 +17,12 @@ export const getBooks = async () => {
 }
 
 export const searchBooks = async (query: string) => {
-   const token = localStorage.getItem('token')
+   if (!query) return
 
-   if (!query || !token) return
    try {
       const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/product/search?q=${query}`, {
          headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
          },
          params: {
             search: query
@@ -42,13 +39,12 @@ export const searchBooks = async (query: string) => {
 }
 
 export const getBookById = async (id: string) => {
-   const token = localStorage.getItem('token')
-   if (!id || !token) return
+   if (!id) return
 
    try {
       const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/product/details?productId=${id}`, {
          headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
          }
       })
       const data = await res.data.result
@@ -66,12 +62,12 @@ export const postProducts = async (data: any) => {
    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shop/checkout`, {
       method: 'POST',
       headers: {
-         Authorization: `Bearer ${token}`,
+         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
          'Content-Type': 'application/json'
       },
 
       body: JSON.stringify(data)
    })
-//    console.log(res.status)
+   //    console.log(res.status)
    return res.status
 }

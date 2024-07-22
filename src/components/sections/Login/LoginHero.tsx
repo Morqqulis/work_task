@@ -7,7 +7,7 @@ interface ILoginHero {}
 
 const LoginHero: React.FC = (): JSX.Element => {
    return (
-      <section className={`py-40`}>
+      <section className={`py-20 lg:py-40`}>
          <div className="container">
             <Logo
                className={`mb-14 flex w-fit justify-center text-3xl font-bold hover:scale-105 hover:text-red-500 lg:mb-40 lg:justify-normal lg:pl-60 lg:text-left lg:text-4xl`}

@@ -36,10 +36,17 @@ const BooksContainer: React.FC = (): JSX.Element => {
       }
    }, [inputValue, debouncedSearchBooks])
 
+   if (isPending) return <Loading />
+
+   if (error || searchQuery.error)
+      return (
+         <div className={`mb-10 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:mb-20 lg:grid-cols-4`}>
+            <p className={`col-span-4 text-center text-3xl`}>Error</p>
+         </div>
+      )
+
    return (
       <div className={`mb-10 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:mb-20 lg:grid-cols-4`}>
-         {isPending && <Loading />}
-         {error || (searchQuery.error && <p className={`col-span-4 text-center text-3xl`}>Error</p>)}
          {inputValue !== '' && searchQuery.data == null && (
             <p className={`col-span-4 text-center text-3xl`}>No books found</p>
          )}
