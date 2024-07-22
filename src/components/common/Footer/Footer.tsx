@@ -15,7 +15,7 @@ const Footer: React.FC = (): JSX.Element => {
          <Logo className={`text-2xl`} />
           <div className={`flex basis-1/2 flex-wrap justify-between gap-4 sm:gap-8 sm:flex-nowrap`}>
             <div>
-              <h5 className={`mb-1 font-bold`}>Social</h5>
+              <h4 className={`mb-1 font-bold`}>Social</h4>
               <ul className={`flex flex-col gap-1`}>
                 {footerData.socials.map((social) => (
                   <li key={social.id}>
