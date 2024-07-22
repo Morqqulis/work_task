@@ -5,8 +5,7 @@ import { getBooks } from '@utils/functions'
 import { useEffect, useState } from 'react'
 import CheckoutItem from './CheckoutItem'
 import CheckoutSummary from './CheckoutSummary'
-import { usePathname } from 'next/navigation'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 interface ICheckoutContainer {}
 

@@ -63,11 +63,15 @@ export const postProducts = async (data: any) => {
    const token = localStorage.getItem('token')
    if (!token || !data) return
 
-   const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/shop/checkout`, data, {
+   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shop/checkout`, {
+      method: 'POST',
       headers: {
-         Authorization: `Bearer ${token}`
-      }
+         Authorization: `Bearer ${token}`,
+         'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify(data)
    })
-   console.log(res.data)
-   return res.data
+//    console.log(res.status)
+   return res.status
 }

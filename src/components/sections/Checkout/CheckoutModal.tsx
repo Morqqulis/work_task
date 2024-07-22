@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import {
-    AlertDialog,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger
+   AlertDialog,
+   AlertDialogCancel,
+   AlertDialogContent,
+   AlertDialogDescription,
+   AlertDialogFooter,
+   AlertDialogHeader,
+   AlertDialogTitle,
+   AlertDialogTrigger
 } from '@ui/alert-dialog'
 import Loading from '@ui/Loading'
 import { postProducts } from '@utils/functions'
@@ -35,8 +35,6 @@ const CheckoutModal: React.FC<ICheckoutModal> = ({ books }): JSX.Element => {
 
    const handleCheckout = () => {
       refetch()
-      console.log(error)
-      console.log(data)
    }
 
    return (
@@ -48,29 +46,25 @@ const CheckoutModal: React.FC<ICheckoutModal> = ({ books }): JSX.Element => {
             Checkout
          </AlertDialogTrigger>
          <AlertDialogContent className={`flex flex-col items-center justify-center gap-4`}>
-            {error ? (
-               <Image src={'/error.png'} alt={'Error'} width={100} height={100} />
-            ) : isPending ? null : (
-               <Image src={'/success.png'} alt={'Success'} width={100} height={100} />
+            {isPending ? (
+               <Loading />
+            ) : (
+               <Image
+                  src={`${data?.toString().startsWith('2') ? '/success.png' : '/error.png'}`}
+                  alt={'Error'}
+                  width={100}
+                  height={100}
+               />
             )}
-            <AlertDialogHeader className={`mb-4 flex max-w-[300px] flex-col gap-4 !text-center !text-slate-900`}>
-               {isPending && <Loading />}
-               {error ? (
-                  <AlertDialogTitle className={`!text-2xl font-semibold`}>{errorTitle}</AlertDialogTitle>
-               ) : isPending ? null : (
-                  <AlertDialogTitle>{succesTitle}</AlertDialogTitle>
-               )}
 
-               {/* {isPending && <Loading />} */}
-               {error ? (
-                  <AlertDialogDescription className={`text-center !text-lg !text-black`}>
-                     {errorText}
-                  </AlertDialogDescription>
-               ) : isPending ? null : (
-                  <AlertDialogDescription className={`text-center !text-lg !text-black`}>
-                     {successText}
-                  </AlertDialogDescription>
-               )}
+            <AlertDialogHeader className={`mb-4 flex max-w-[300px] flex-col gap-4 !text-center !text-slate-900`}>
+               <AlertDialogTitle className={`!text-2xl font-semibold`}>
+                  {data?.toString().startsWith('2') ? succesTitle : isPending ? null : errorTitle}
+               </AlertDialogTitle>
+
+               <AlertDialogDescription className={`text-center !text-lg !text-black`}>
+                  {data?.toString().startsWith('2') ? successText : isPending ? null : errorText}
+               </AlertDialogDescription>
             </AlertDialogHeader>
 
             <AlertDialogFooter>
