@@ -10,10 +10,10 @@ export const getBooks = async () => {
       const data = await res.data.result.products
       return data
    } catch (error) {
-      console.log(error)
+      return 'We have some problems'
    }
 
-   throw new Error('Books not found')
+  
 }
 
 export const searchBooks = async (query: string) => {
@@ -30,12 +30,12 @@ export const searchBooks = async (query: string) => {
       })
       const data = await res.data.result.products
 
-      return data
+      return data || []
    } catch (error) {
-      console.log('404 =))', 'Book not found')
+      return 'Book not found'
    }
 
-   throw new Error('Books not found')
+  
 }
 
 export const getBookById = async (id: string) => {
@@ -51,7 +51,7 @@ export const getBookById = async (id: string) => {
 
       return data
    } catch (error) {
-      console.log(error)
+      return 'Book not found'
    }
 }
 
@@ -62,7 +62,7 @@ export const postProducts = async (data: any) => {
    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shop/checkout`, {
       method: 'POST',
       headers: {
-         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+         Authorization: `Bearer ${token}`,
          'Content-Type': 'application/json'
       },
 

@@ -37,7 +37,7 @@ const DetailsHero: React.FC<IDetailsHero> = ({ id }): JSX.Element => {
 
       if (!token) {
          router.push('/')
-         document.location.href = '/'
+         return
       }
 
       const currentProducts = localStorage.getItem('products')
