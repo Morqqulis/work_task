@@ -109,6 +109,7 @@ const CheckoutContainer: React.FC = (): JSX.Element => {
             <div className={`sm:2/3 mb-auto flex h-full flex-col md:basis-3/4`}>
                {isPending && <Loading />}
                {error && <p>Error loading books</p>}
+               
                {showBooks.length > 0
                   ? showBooks.map((book) => (
                        <CheckoutItem
@@ -121,7 +122,7 @@ const CheckoutContainer: React.FC = (): JSX.Element => {
                           onRemove={() => handleRemoveBook(book.id)}
                           onIncrement={() => handleIncrement(book.id)}
                           onDecrement={() => handleDecrement(book.id)}
-                       />
+                       /> 
                     ))
                   : !isPending && (
                        <h2 className={`mb-auto h-full text-center text-2xl font-semibold`}>No items in your cart</h2>
