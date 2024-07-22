@@ -4,7 +4,6 @@ import { Heart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-// import useBasketStore from '@stores/basketStore'
 import { Button } from '@ui/button'
 interface IBookCard {
    img: string
@@ -16,7 +15,6 @@ interface IBookCard {
 
 const BookCard: React.FC<IBookCard> = ({ img, id, title, text, likes }): JSX.Element => {
    const [liked, setLiked] = useState<boolean>(false)
-   //   const { basket, addToBasket } = useBasketStore()
 
    return (
       <div
@@ -25,10 +23,17 @@ const BookCard: React.FC<IBookCard> = ({ img, id, title, text, likes }): JSX.Ele
       >
          <Button
             className={`ml-auto w-fit bg-transparent text-right text-2xl font-bold text-black hover:text-white active:text-white`}
+            type={'button'}
+            aria-label={'View more'}
+            disabled
          >
             ...
          </Button>
-         <Link className={`mb-auto flex grow flex-col gap-2.5 hover:scale-105`} href={`/details/${id}`}>
+         <Link
+            className={`mb-auto flex grow flex-col gap-2.5 hover:scale-105`}
+            href={`/details/${id}`}
+            aria-label={'Book link'}
+         >
             <AspectRatio ratio={16 / 9}>
                <Image
                   className={`h-full w-full rounded-xl object-cover`}
@@ -44,6 +49,8 @@ const BookCard: React.FC<IBookCard> = ({ img, id, title, text, likes }): JSX.Ele
          </Link>
          <Button
             className={`ml-auto flex w-fit items-center gap-4 rounded-full bg-white text-black hover:text-white`}
+            type={'button'}
+            aria-label={'Like'}
             onClick={() => setLiked(!liked)}
          >
             <Heart className={`${liked ? 'fill-red-500' : 'fill-black'}`} size={16} />

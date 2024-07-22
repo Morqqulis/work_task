@@ -110,7 +110,7 @@ const LoginForm: React.FC = (): JSX.Element => {
                )}
             />
 
-            <Button className={`mt-4 w-full rounded-full py-6 hover:bg-red-500`} type="submit">
+            <Button className={`mt-4 w-full rounded-full py-6 hover:bg-red-500`} type={'submit'} aria-label={'Submit'}>
                Submit
             </Button>
          </form>

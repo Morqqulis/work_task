@@ -6,7 +6,7 @@ interface ILogo {
 
 const Logo: React.FC<ILogo> = ({ className }): JSX.Element => {
   return (
-    <Link className={`font-bold text-black hover:scale-105 ${className || ''}`} href={'/books'}>
+    <Link className={`font-bold text-black hover:scale-105 ${className || ''}`} href={'/books'} aria-label={'Link to products page'}>
       BookBuzz
     </Link>
   )

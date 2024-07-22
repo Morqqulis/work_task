@@ -27,7 +27,7 @@ const CheckoutItem: React.FC<ICheckoutItem> = ({
          <div className={`flex h-full w-full flex-col gap-3`}>
             <div className={`flex justify-between gap-2.5`}>
                <h2 className="mb-3 text-lg font-bold">{title}</h2>
-               <Button className={`h-fit`} onClick={onRemove}>
+               <Button className={`h-fit`} onClick={onRemove} type={'button'} aria-label={'Remove item'}>
                   -
                </Button>
             </div>
@@ -45,9 +45,9 @@ const CheckoutItem: React.FC<ICheckoutItem> = ({
                priority
             />
             <div className="absolute bottom-2 right-2 flex items-center rounded-xl bg-black">
-               <Button onClick={onDecrement}>-</Button>
+               <Button onClick={onDecrement} type={'button'} aria-label={'Decrement count'}>-</Button>
                <p className="min-w-[30px] bg-black text-center text-white">{count}</p>
-               <Button onClick={onIncrement}>+</Button>
+               <Button onClick={onIncrement} type={'button'} aria-label={'Increment count'}>+</Button>
             </div>
          </div>
       </div>

@@ -10,7 +10,7 @@ const SideMenu: React.FC<ISideMenu> = ({ className }: ISideMenu): JSX.Element =>
   return (
     <div className={`sm:hidden ${className}`}>
       <Sheet>
-        <SheetTrigger>
+        <SheetTrigger type={'button'} aria-label={'Side menu'}>
           <Menu className={`translate-y-[3px]`} size={24} />
         </SheetTrigger>
         <SheetContent side={'left'}>

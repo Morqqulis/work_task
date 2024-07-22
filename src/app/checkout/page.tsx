@@ -1,4 +1,4 @@
-import CheckoutHero from '@sections/Checkout/CheckoutHero'
+import CheckoutContainer from '@sections/Checkout/CheckoutContainer'
 import { CheckoutPageMeta } from '@settings/meta'
 import { NextPage } from 'next'
 
@@ -9,7 +9,9 @@ interface ICheckout {}
 const CheckoutPage: NextPage = (): JSX.Element => {
   return (
     <main>
-      <CheckoutHero />
+       <section className={`py-12 lg:py-20`}>
+          <CheckoutContainer />
+      </section>
     </main>
   )
 }

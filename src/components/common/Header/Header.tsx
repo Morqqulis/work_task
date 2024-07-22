@@ -31,15 +31,15 @@ const Header: React.FC<IHeader> = ({ className }: IHeader): JSX.Element => {
                   placeholder={'Search for books by title, author, or ISBN'}
                />
                <div className={`flex items-center gap-4 md:gap-6 lg:gap-10`}>
-                  <Link className={`font-semibold ${path !== '/books' && 'hidden'}`} href={'/checkout'}>
+                  <Link className={`font-semibold ${path !== '/books' && 'hidden'}`} href={'/checkout'} aria-label={'Link to Checkout'}>
                      Card
                   </Link>
-                  <Link className={`${path !== '/books' && 'hidden'}`} href={'/'}>
+                  <Link className={`${path !== '/books' && 'hidden'}`} href={'/'} aria-label={'Link to Login page'}>
                      <Button className={`rounded-lg px-10 hover:bg-red-500`} type={'button'} aria-label={'Login'}>
                         Login
                      </Button>
                   </Link>
-                  <Button className={`rounded-full p-0`} type={'button'}>
+                  <Button className={`rounded-full p-0`} type={'button'} aria-label={'Avatar'}>
                      <Avatar className={`duration-300 hover:scale-110`}>
                         <AvatarImage className={`rounded-full`} src="https://github.com/shadcn.png" />
                         <AvatarFallback>CN</AvatarFallback>

@@ -24,7 +24,7 @@ const HeaderInput: React.FC<IHeaderInput> = ({ className, placeholder }: IHeader
         value={inputValue}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
       />
-      <Button className={`group/searchBtn absolute right-0 top-0 bg-white p-2 sm:px-4 md:bg-transparent`}>
+      <Button className={`group/searchBtn absolute right-0 top-0 bg-white p-2 sm:px-4 md:bg-transparent`} type={'button'} aria-label={'Search'} disabled>
         <Search className={`text-black duration-200 group-hover/searchBtn:text-white`} />
       </Button>
     </Label>
